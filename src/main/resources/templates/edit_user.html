@@ -1,0 +1,294 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Edit User</title>
+    <!-- Bootstrap CSS -->
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.0/css/bootstrap.min.css" rel="stylesheet">
+    <!-- Font Awesome Icons -->
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet">
+    
+    <style>
+        body {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 100vh;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+        
+        .card {
+            border: none;
+            border-radius: 20px;
+            box-shadow: 0 15px 35px rgba(0, 0, 0, 0.1);
+            backdrop-filter: blur(10px);
+            background: rgba(255, 255, 255, 0.95);
+        }
+        
+        .card-header {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            border-radius: 20px 20px 0 0 !important;
+            border: none;
+            padding: 2rem;
+        }
+        
+        .card-title {
+            color: white;
+            font-weight: 600;
+            font-size: 1.8rem;
+            margin: 0;
+            text-align: center;
+        }
+        
+        .form-floating {
+            margin-bottom: 1.5rem;
+        }
+        
+        .form-control {
+            border: 2px solid #e9ecef;
+            border-radius: 15px;
+            padding: 1rem;
+            font-size: 1rem;
+            transition: all 0.3s ease;
+            background: rgba(255, 255, 255, 0.9);
+        }
+        
+        .form-control:focus {
+            border-color: #667eea;
+            box-shadow: 0 0 0 0.25rem rgba(102, 126, 234, 0.25);
+            background: white;
+        }
+        
+        .form-floating > label {
+            color: #6c757d;
+            font-weight: 500;
+        }
+        
+        .btn-update {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            border: none;
+            border-radius: 15px;
+            padding: 1rem 3rem;
+            font-weight: 600;
+            font-size: 1.1rem;
+            letter-spacing: 0.5px;
+            transition: all 0.3s ease;
+            box-shadow: 0 8px 25px rgba(102, 126, 234, 0.3);
+        }
+        
+        .btn-update:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 12px 35px rgba(102, 126, 234, 0.4);
+            background: linear-gradient(135deg, #5a67d8 0%, #6b46c1 100%);
+        }
+        
+        .btn-cancel {
+            background: transparent;
+            border: 2px solid #6c757d;
+            color: #6c757d;
+            border-radius: 15px;
+            padding: 1rem 3rem;
+            font-weight: 600;
+            font-size: 1.1rem;
+            letter-spacing: 0.5px;
+            transition: all 0.3s ease;
+            text-decoration: none;
+            display: inline-block;
+            text-align: center;
+        }
+        
+        .btn-cancel:hover {
+            background: #6c757d;
+            color: white;
+            transform: translateY(-2px);
+            text-decoration: none;
+        }
+        
+        .input-icon {
+            position: absolute;
+            right: 1rem;
+            top: 50%;
+            transform: translateY(-50%);
+            color: #6c757d;
+            z-index: 10;
+        }
+        
+        .form-group {
+            position: relative;
+        }
+        
+        .container-custom {
+            max-width: 600px;
+            margin: 0 auto;
+            padding: 2rem 1rem;
+        }
+        
+        @media (max-width: 768px) {
+            .container-custom {
+                padding: 1rem;
+            }
+            
+            .card-header {
+                padding: 1.5rem;
+            }
+            
+            .card-title {
+                font-size: 1.5rem;
+            }
+        }
+        
+        .fade-in {
+            animation: fadeIn 0.8s ease-in;
+        }
+        
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container-custom">
+        <div class="card fade-in">
+            <div class="card-header">
+                <h2 class="card-title">
+                    <i class="fas fa-user-edit me-3"></i>Edit User Profile
+                </h2>
+            </div>
+            <div class="card-body p-4">
+                <form th:action="@{'/users/edit/' + ${user.id}}" th:object="${user}" method="post">
+                    <!-- Name Field -->
+                    <div class="form-group">
+                        <div class="form-floating">
+                            <input type="text" 
+                                   class="form-control" 
+                                   id="name" 
+                                   th:field="*{name}" 
+                                   placeholder="Enter full name"
+                                   required>
+                            <label for="name">
+                                <i class="fas fa-user me-2"></i>Full Name
+                            </label>
+                        </div>
+                    </div>
+
+                    <!-- Student ID Field -->
+                    <div class="form-group">
+                        <div class="form-floating">
+                            <input type="text" 
+                                   class="form-control" 
+                                   id="studentId" 
+                                   th:field="*{studentId}" 
+                                   placeholder="Enter student ID"
+                                   required>
+                            <label for="studentId">
+                                <i class="fas fa-id-card me-2"></i>Student ID
+                            </label>
+                        </div>
+                    </div>
+
+                    <!-- Email Field -->
+                    <div class="form-group">
+                        <div class="form-floating">
+                            <input type="email" 
+                                   class="form-control" 
+                                   id="email" 
+                                   th:field="*{email}" 
+                                   placeholder="Enter email address"
+                                   required>
+                            <label for="email">
+                                <i class="fas fa-envelope me-2"></i>Email Address
+                            </label>
+                        </div>
+                    </div>
+
+                    <!-- Phone Field -->
+                    <div class="form-group">
+                        <div class="form-floating">
+                            <input type="tel" 
+                                   class="form-control" 
+                                   id="phone" 
+                                   th:field="*{phone}" 
+                                   placeholder="Enter phone number"
+                                   required>
+                            <label for="phone">
+                                <i class="fas fa-phone me-2"></i>Phone Number
+                            </label>
+                        </div>
+                    </div>
+
+                    <!-- Address Field -->
+                    <div class="form-group">
+                        <div class="form-floating">
+                            <textarea class="form-control" 
+                                      id="address" 
+                                      th:field="*{address}" 
+                                      placeholder="Enter address"
+                                      style="min-height: 100px;"
+                                      required></textarea>
+                            <label for="address">
+                                <i class="fas fa-map-marker-alt me-2"></i>Address
+                            </label>
+                        </div>
+                    </div>
+
+                    <!-- Action Buttons -->
+                    <div class="d-grid gap-3 d-md-flex justify-content-md-center mt-4">
+                        <button type="submit" class="btn btn-primary btn-update">
+                            <i class="fas fa-save me-2"></i>Update Profile
+                        </button>
+                        <a href="#" class="btn btn-cancel" onclick="history.back()">
+                            <i class="fas fa-times me-2"></i>Cancel
+                        </a>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+
+    <!-- Bootstrap JS -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.0/js/bootstrap.bundle.min.js"></script>
+    
+    <!-- Form Validation Enhancement -->
+    <script>
+        // Add some interactive feedback
+        document.addEventListener('DOMContentLoaded', function() {
+            const form = document.querySelector('form');
+            const inputs = form.querySelectorAll('input, textarea');
+            
+            inputs.forEach(input => {
+                input.addEventListener('blur', function() {
+                    if (this.value.trim() !== '') {
+                        this.classList.add('is-valid');
+                        this.classList.remove('is-invalid');
+                    }
+                });
+                
+                input.addEventListener('invalid', function() {
+                    this.classList.add('is-invalid');
+                    this.classList.remove('is-valid');
+                });
+            });
+            
+            form.addEventListener('submit', function(e) {
+                let isValid = true;
+                inputs.forEach(input => {
+                    if (!input.checkValidity()) {
+                        input.classList.add('is-invalid');
+                        isValid = false;
+                    }
+                });
+                
+                if (!isValid) {
+                    e.preventDefault();
+                }
+            });
+        });
+    </script>
+</body>
+</html>
