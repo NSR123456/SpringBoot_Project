@@ -1,11 +1,12 @@
 # 🎓 Student Registration System
 
 A modern web application built using **Spring Boot**, **Thymeleaf**, and **Bootstrap 5** for registering students in an academic environment.
+
+
 <img width="1542" height="880" alt="mmmmmmm" src="https://github.com/user-attachments/assets/54dde18c-1c32-4571-bbd1-4febcc1a1aab" />
 
 
 
-(https://raw.githubusercontent.com/NSR123456/SpringBoot_Project/main/images/registration_page.png)
 
 ---
 
@@ -37,13 +38,40 @@ A modern web application built using **Spring Boot**, **Thymeleaf**, and **Boots
 ## 📸 UI Preview
 
 ### 🎨 Registration Page
+
 <img width="1861" height="916" alt="reggggg" src="https://github.com/user-attachments/assets/70488dd9-396d-4977-9461-abd893628c6c" />
 
 
 
-(https://raw.githubusercontent.com/NSR123456/SpringBoot_Project/main/images/registration_page.png)
+
 
 ---
 
 ## 🏗️ Project Structure
+SpringBoot_Project/
+├── src/
+│   ├── main/
+│   │   ├── java/
+│   │   │   └── com/
+│   │   │       └── example/
+│   │   │           └── demo/
+│   │   │               ├── controller/
+│   │   │               │   ├── UserController.java
+│   │   │               │   └── HomeController.java
+│   │   │               ├── repository/
+│   │   │               │   └── UserRepository.java
+│   │   │         
+│   │   │               │   └── User.java
+│   │   │               └── DemoApplication.java
+│   │   └── resources/
+│   │       ├── templates/
+│   │       │   ├── register.html
+│   │       │   ├── edit_user.html
+│   │       │   └── user_view.html
+│   │       ├
+│   │       └── application.properties
+├── images/
+│   └── registration_page.png  (for README preview)
+├── pom.xml
+└── README.md
 
