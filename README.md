@@ -48,30 +48,41 @@ A modern web application built using **Spring Boot**, **Thymeleaf**, and **Boots
 ---
 
 ## 🏗️ Project Structure
-SpringBoot_Project/
-├── src/
-│   ├── main/
-│   │   ├── java/
-│   │   │   └── com/
-│   │   │       └── example/
-│   │   │           └── demo/
-│   │   │               ├── controller/
-│   │   │               │   ├── UserController.java
-│   │   │               │   └── HomeController.java
-│   │   │               ├── repository/
-│   │   │               │   └── UserRepository.java
-│   │   │         
-│   │   │               │   └── User.java
-│   │   │               └── DemoApplication.java
-│   │   └── resources/
-│   │       ├── templates/
-│   │       │   ├── register.html
-│   │       │   ├── edit_user.html
-│   │       │   └── user_view.html
-│   │       ├
-│   │       └── application.properties
-├── images/
-│   └── registration_page.png  (for README preview)
+├── .gitattributes
+├── .gitignore
+├── .mvn
+    └── wrapper
+    │   └── maven-wrapper.properties
+├── README.md
+├── mvnw
+├── mvnw.cmd
 ├── pom.xml
-└── README.md
+└── src
+    ├── main
+        ├── java
+        │   └── com
+        │   │   └── example
+        │   │       └── demo
+        │   │           ├── DemoApplication.java
+        │   │           ├── HomeController.java
+        │   │           ├── User.java
+        │   │           ├── UserController.java
+        │   │           └── UserRepository.java
+        └── resources
+        │   ├── application.properties
+        │   ├── db
+        │       └── migration
+        │       │   └── V1__init_schema.sql
+        │   └── templates
+        │       ├── edit_user.html
+        │       ├── register.html
+        │       ├── success.html
+        │       ├── user_list.html
+        │       └── user_view.html
+    └── test
+        └── java
+            └── com
+                └── example
+                    └── demo
+                        └── DemoApplicationTests.java
 
